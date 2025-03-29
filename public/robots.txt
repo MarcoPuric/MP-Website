@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://marco-puric.dev/sitemap.xml

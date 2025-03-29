@@ -1,0 +1,30 @@
+/* timeline.css */
+
+/* Erlaube dynamisches Styling via Tailwind/Custom Properties */
+.vertical-timeline-element-title,
+.vertical-timeline-element-subtitle,
+.vertical-timeline-element-date,
+.vertical-timeline-element-content {
+  color: inherit !important;
+}
+
+/* Einheitliches Hintergrund-/Textverhalten je nach Theme */
+.vertical-timeline-element-content {
+  background-color: var(--color-card) !important;
+  color: var(--color-foreground) !important;
+  border: 1px solid var(--color-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
+}
+
+/* Hover Effekt */
+.vertical-timeline-element-content:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional für bessere Lesbarkeit von Datum */
+.vertical-timeline-element-date {
+  font-weight: 500;
+  opacity: 0.8;
+}
