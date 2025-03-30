@@ -16,7 +16,6 @@ import Skills from "@/components/sections/Skills";
 import Experience from "@/components/sections/Experience";
 import { Linkedin, Github } from "lucide-react";
 import { trackEvent } from "@/lib/tracker";
-import { isAuthorized } from "@/lib/auth";
 
 
 
