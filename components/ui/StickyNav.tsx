@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Home, FileText, Brain, Shield } from "lucide-react";
+import { Home, FileText, Brain, Shield, Mail } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 
 export default function StickyNav() {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const sections = ["hero", "lebenslauf", "skills"];
+    const sections = ["hero", "lebenslauf", "skills", "kontakt"];
     const observers: IntersectionObserver[] = [];
 
     sections.forEach((id) => {
@@ -42,6 +42,7 @@ export default function StickyNav() {
       <NavIcon href="#hero" icon={<Home />} label="Home" active={activeSection === "hero"} />
       <NavIcon href="#lebenslauf" icon={<FileText />} label="Lebenslauf" active={activeSection === "lebenslauf"} />
       <NavIcon href="#skills" icon={<Brain />} label="Skills" active={activeSection === "skills"} />
+      <NavIcon href="#kontakt" icon={<Mail />} label="Kontakt"active={activeSection === "kontakt"}/>
 
       {/* Impressum Button */}
       <Link

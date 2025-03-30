@@ -1,12 +1,8 @@
 'use client';
 
-import { Button } from "../components/ui/button";
-import { Card, CardContent } from "../components/ui/card";
-import { Badge } from "../components/ui/badge";
 import { motion } from "framer-motion";
 import React from "react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import Timeline from "@/components/ui/timeline";  // Der Import von Timeline
 import '../components/ui/timeline.css';
 import SkillsMindmap from "@/components/ui/skills-mindmap";
 import ScrollAurora from "@/components/ui/scroll-aurora";
@@ -14,9 +10,13 @@ import Link from "next/link";
 import { Typewriter } from 'react-simple-typewriter'
 import StickyNav from "@/components/ui/StickyNav";
 import Logo from "@/components/ui/Logo";
-import { Linkedin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/elements";
+import Skills from "@/components/sections/Skills";
+import Experience from "@/components/sections/Experience";
+import { Linkedin, Github } from "lucide-react";
+
 
 
 
@@ -37,18 +37,24 @@ export default function HomePage() {
   }, []);
   return (
     <main className="relative bg-background text-foreground min-h-screen font-sans overflow-x-hidden">
-      <ScrollAurora />
-      <ThemeToggle />
+      {/* Logo oben links */}
+      <div className="absolute top-4 left-4 z-50">
+        <Logo />
+      </div>
+
+      {/* ThemeToggle oben rechts */}
+      <div className="absolute top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
+
+      {/* Klassische Sticky Navigation */}
       <StickyNav />
-      <main className="relative z-10 ..."></main>
+      <ScrollAurora />
       {/* Hero Section */}
-      <section id="hero" className="h-screen flex flex-col justify-center items-center text-center p-6 relative">
+      <section id="hero" className="scroll-mt-20 h-screen flex flex-col justify-center items-center text-center p-6 relative">
         {/* Theme Toggle im Hero */}
         <div className="absolute top-4 right-4">
           <ThemeToggle />
-        </div>
-        <div className="absolute top-4 left-4 z-50">
-          <Logo />
         </div>
         <div className="flex items-center gap-2 text-sm text-green-500">
           <ShieldCheck className="w-4 h-4" />
@@ -125,15 +131,11 @@ export default function HomePage() {
           ↓ Mehr erfahren
         </div>
       </section>
-      {/* Lebenslauf Timeline */}
-      <section id="lebenslauf" className="p-8 md:p-16">
-        <h2 className="text-3xl font-bold mb-6 text-center">Lebenslauf</h2>
-        <Timeline /> {/* Die Timeline-Komponente wird hier gerendert */}
+      <section id="lebenslauf" className="scroll-mt-20 py-16 bg-background text-foreground">
+      <Experience />
       </section>
-      {/* Skills Section */}
-      <section id="skills" className="py-20">
-        <h2 className="text-3xl font-bold text-center mb-10">Skills Mindmap</h2>
-        <SkillsMindmap />
+      <section id="skills" className="scroll-mt-20 py-16 bg-background text-foreground">
+      <Skills />
       </section>
       {/* Zertifikate Section */}
       <section className="p-8 md:p-16 bg-background text-foreground">
@@ -228,7 +230,7 @@ export default function HomePage() {
       </section>
 
       {/* Kontakt Section */}
-      <section className="p-8 md:p-16 text-center bg-zinc-900 text-white">
+      <section id="kontakt" className="scroll-mt-20 p-8 md:p-16 text-center bg-zinc-900 text-white">
         <h2 className="text-4xl font-bold mb-6">Kontakt</h2>
         <p className="mb-4 text-muted-foreground">
           Du hast Fragen, Interesse oder willst mit mir arbeiten?
@@ -239,7 +241,8 @@ export default function HomePage() {
         >
           ✉️ E-Mail schreiben
         </a>
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6 flex justify-center flex-wrap gap-4">
+          {/* LinkedIn Button */}
           <a
             href="https://de.linkedin.com/in/marco-puric-046451181"
             target="_blank"
@@ -247,9 +250,21 @@ export default function HomePage() {
             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl font-medium transition-transform transform hover:scale-105"
           >
             <Linkedin className="w-5 h-5" />
-            Mein LinkedIn Profil
+            LinkedIn Profil
+          </a>
+
+          {/* GitHub Button */}
+          <a
+            href="https://github.com/MarcoPuric"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-900 text-white px-5 py-3 rounded-xl font-medium transition-transform transform hover:scale-105"
+          >
+            <Github className="w-5 h-5" />
+            GitHub Profil
           </a>
         </div>
+
         <footer className="text-center text-sm text-muted-foreground mt-12 mb-4">
         <Link href="/impressum" className="underline hover:text-foreground">
           Impressum & Datenschutz

@@ -1,10 +1,10 @@
-import { Suspense } from 'react';
-import KontaktFormular from '@/components/ui/ContactForm';
+import { Suspense } from "react";
+import ContactSection from "@/components/sections/Contact";
 
 export default function KontaktPage() {
   return (
     <Suspense fallback={<div>Lade Kontaktformular...</div>}>
-      <KontaktFormular />
+      <ContactSection />
     </Suspense>
   );
 }
