@@ -3,10 +3,8 @@
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { FaLaptopCode, FaCogs, FaGraduationCap } from "react-icons/fa";
-import { useTheme } from "next-themes";
 
 export default function Experience() {
-  const { resolvedTheme } = useTheme();
 
   return (
     <section id="lebenslauf" className="scroll-mt-24 py-16">
@@ -62,7 +60,7 @@ export default function Experience() {
                 <li>Verantwortlicher für Performanceverbesserungen des Belegverarbeitungs-Workflow - (Etablieren der ersten Anwendung</li>
                 <li>die eine Container-basierte Architektur verfügt)</li>
                 <li>Projektleiter &quot;Documentconverter&quot; - On the fly Konvertierung und Optimierung der Belege für den nachfolgenden Workflow</li>
-                <li>Projekt "Mandantenverwaltung Online" - Auslagern der Mandantenverwaltung aus der On-Premise Anwendung</li>
+                <li>Projekt &quot;Mandantenverwaltung Online&quot; - Auslagern der Mandantenverwaltung aus der On-Premise Anwendung</li>
                 <li>Verbesserung der OCR-Erkennung</li>
                 <li>Anbindung von Partnern an die Beleg-Schnittstelle &quot;Connect&quot;</li>
                 <li>Workflow-Optimierung der &quot;Beleg-App&quot;</li>

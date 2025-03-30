@@ -28,30 +28,28 @@ const fadeInUp = {
   transition: { duration: 0.6, ease: "easeOut" },
 };
 
-const [visitCount, setVisitCount] = useState(0);
-const [lastEvent, setLastEvent] = useState<null | { type: string; timestamp: number }>(null);
-
-useEffect(() => {
-  // Besucheranzahl lokal erhöhen
-  const visits = Number(localStorage.getItem("visit-count") || 0) + 1;
-  localStorage.setItem("visit-count", visits.toString());
-  setVisitCount(visits);
-
-  // Letztes Event abrufen
-  const events = JSON.parse(localStorage.getItem("mp-tracking-events") || "[]");
-  if (events.length > 0) {
-    const last = events[events.length - 1];
-    setLastEvent({ type: last.type, timestamp: last.timestamp });
-  }
-}, []);
-
-
 export default function HomePage() {
   const [lastVisit, setLastVisit] = useState<string | null>(null);
   useEffect(() => {
     const last = localStorage.getItem("lastVisit");
     if (last) setLastVisit(new Date(last).toLocaleString());
     localStorage.setItem("lastVisit", new Date().toISOString());
+  }, []);
+  const [visitCount, setVisitCount] = useState(0);
+  const [lastEvent, setLastEvent] = useState<null | { type: string; timestamp: number }>(null);
+
+  useEffect(() => {
+    // Besucheranzahl lokal erhöhen
+    const visits = Number(localStorage.getItem("visit-count") || 0) + 1;
+    localStorage.setItem("visit-count", visits.toString());
+    setVisitCount(visits);
+
+    // Letztes Event abrufen
+    const events = JSON.parse(localStorage.getItem("mp-tracking-events") || "[]");
+    if (events.length > 0) {
+      const last = events[events.length - 1];
+      setLastEvent({ type: last.type, timestamp: last.timestamp });
+    }
   }, []);
   return (
     <main className="relative bg-background text-foreground min-h-screen font-sans overflow-x-hidden">
