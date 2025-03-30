@@ -16,6 +16,9 @@ import { Button } from "@/components/ui/elements";
 import Skills from "@/components/sections/Skills";
 import Experience from "@/components/sections/Experience";
 import { Linkedin, Github } from "lucide-react";
+import { trackEvent } from "@/lib/tracker";
+import { useRouter } from "next/navigation";
+import { isAuthorized } from "@/lib/auth";
 
 
 
@@ -121,7 +124,10 @@ export default function HomePage() {
         </motion.p>
 
         {/* Button */}
-        <Link href="/kontakt">
+        <Link
+          href="/kontakt"
+          onClick={() => trackEvent("Hero: Kontakt-Klick")}
+        >
           <Button className="bg-purple-600 hover:bg-purple-700 shadow-lg transition-all duration-300">
             Kontakt aufnehmen
           </Button>
@@ -201,10 +207,12 @@ export default function HomePage() {
                   pathname: "/kontakt",
                   query: { subject: `Zertifikat: ${cert.title}` },
                 }}
+                onClick={() => trackEvent(`Zertifikat: ${cert.title}`)}
                 className="mt-auto px-4 py-2 text-sm bg-purple-600 hover:bg-purple-700 text-white rounded-md transition text-center"
               >
                 📄 Zertifikat anfordern
               </Link>
+
 
             </motion.div>
           ))}
@@ -223,10 +231,12 @@ export default function HomePage() {
             pathname: "/kontakt",
             query: { subject: "Lebenslauf anfordern" },
           }}
+          onClick={() => trackEvent("Lebenslauf angefordert")}
           className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl font-medium transition-all duration-500 transform hover:scale-105"
         >
           📄 Lebenslauf anfordern
         </Link>
+
       </section>
 
       {/* Kontakt Section */}
@@ -247,6 +257,7 @@ export default function HomePage() {
             href="https://de.linkedin.com/in/marco-puric-046451181"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent("Kontakt: LinkedIn")}
             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl font-medium transition-transform transform hover:scale-105"
           >
             <Linkedin className="w-5 h-5" />
@@ -258,6 +269,7 @@ export default function HomePage() {
             href="https://github.com/MarcoPuric"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent("Kontakt: GitHub")}
             className="inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-900 text-white px-5 py-3 rounded-xl font-medium transition-transform transform hover:scale-105"
           >
             <Github className="w-5 h-5" />
@@ -269,6 +281,19 @@ export default function HomePage() {
         <Link href="/impressum" className="underline hover:text-foreground">
           Impressum & Datenschutz
         </Link>
+        <button
+          onClick={() => {
+            const pw = prompt("🔐 Admin-Zugang: Passwort eingeben");
+            if (pw && isAuthorized(pw)) {
+              window.location.href = "/intern/statistik";
+            } else if (pw) {
+              alert("❌ Falsches Passwort.");
+            }
+          }}
+          className="underline hover:text-purple-500 transition-colors"
+        >
+          📊 Statistik
+        </button>
       </footer>
       </section>
     </main>
