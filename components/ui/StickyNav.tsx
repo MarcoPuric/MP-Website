@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Home, FileText, Brain, Shield, Mail } from "lucide-react";
 import Logo from "@/components/ui/Logo";
+import React from "react";
 
 export default function StickyNav() {
   const [activeSection, setActiveSection] = useState("");

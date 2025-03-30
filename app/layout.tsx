@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from 'sonner';
 import AuroraBackground from "@/components/ui/aurora-background";
+import React from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

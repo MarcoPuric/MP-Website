@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner"; // sonner für Toasts verwenden
 import Link from "next/link";
+import React from "react";
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);

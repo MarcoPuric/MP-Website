@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import React from "react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import '../components/ui/timeline.css';
-import SkillsMindmap from "@/components/ui/skills-mindmap";
 import ScrollAurora from "@/components/ui/scroll-aurora";
 import Link from "next/link";
 import { Typewriter } from 'react-simple-typewriter'

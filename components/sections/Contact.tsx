@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/elements";
+import React from "react";
 
 export default function ContactSection() {
   const searchParams = useSearchParams();
