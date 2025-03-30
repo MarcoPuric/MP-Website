@@ -160,8 +160,6 @@ export default function SkillsMindmap() {
         {filteredCategories.flatMap((cat, i) => {
           const angle = (360 / categories.length) * i;
           const baseRadians = (angle * Math.PI) / 180;
-          const baseX = centerX + Math.cos(baseRadians) * 180;
-          const baseY = centerY + Math.sin(baseRadians) * 180;
 
           return cat.skills.map((skill, j) => {
             const offset = (j - cat.skills.length / 2) * 0.5;
