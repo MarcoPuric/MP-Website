@@ -28,6 +28,22 @@ const fadeInUp = {
   transition: { duration: 0.6, ease: "easeOut" },
 };
 
+const [visitCount, setVisitCount] = useState(0);
+const [lastEvent, setLastEvent] = useState<null | { type: string; timestamp: number }>(null);
+
+useEffect(() => {
+  // Besucheranzahl lokal erhöhen
+  const visits = Number(localStorage.getItem("visit-count") || 0) + 1;
+  localStorage.setItem("visit-count", visits.toString());
+  setVisitCount(visits);
+
+  // Letztes Event abrufen
+  const events = JSON.parse(localStorage.getItem("mp-tracking-events") || "[]");
+  if (events.length > 0) {
+    const last = events[events.length - 1];
+    setLastEvent({ type: last.type, timestamp: last.timestamp });
+  }
+}, []);
 
 
 export default function HomePage() {
@@ -206,13 +222,11 @@ export default function HomePage() {
                   pathname: "/kontakt",
                   query: { subject: `Zertifikat: ${cert.title}` },
                 }}
-                onClick={() => trackEvent(`Zertifikat: ${cert.title}`)}
-                className="mt-auto px-4 py-2 text-sm bg-purple-600 hover:bg-purple-700 text-white rounded-md transition text-center"
+                onClick={() => trackEvent("Zertifikat angefordert", { zertifikat: cert.title })}
+                className="..."
               >
                 📄 Zertifikat anfordern
               </Link>
-
-
             </motion.div>
           ))}
         </div>
@@ -280,19 +294,17 @@ export default function HomePage() {
         <Link href="/impressum" className="underline hover:text-foreground">
           Impressum & Datenschutz
         </Link>
-        <button
-          onClick={() => {
-            const pw = prompt("🔐 Admin-Zugang: Passwort eingeben");
-            if (pw && isAuthorized(pw)) {
-              window.location.href = "/intern/statistik";
-            } else if (pw) {
-              alert("❌ Falsches Passwort.");
-            }
-          }}
-          className="underline hover:text-purple-500 transition-colors"
-        >
-          📊 Statistik
-        </button>
+        {/* Öffentliche Mini-Statistik */}
+        <div className="text-center text-xs text-muted-foreground mt-4">
+          <p>📊 Besucher (lokal): <strong>{visitCount}</strong></p>
+          {lastEvent && (
+            <p>
+              Letztes Event: <strong>{lastEvent.type}</strong> <br />
+              Zeit: {new Date(lastEvent.timestamp).toLocaleString()}
+            </p>
+          )}
+        </div>
+
       </footer>
       </section>
     </main>
