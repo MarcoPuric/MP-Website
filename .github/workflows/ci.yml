@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-lint:
+    name: 🔧 Build & Lint Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v3
+
+      - name: 🧱 Setup Node.js (LTS)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: |
+          echo "::group::npm install"
+          npm ci
+          echo "::endgroup::"
+
+      - name: 🔨 Build
+        run: |
+          echo "::group::npm run build"
+          npm run build
+          echo "::endgroup::"
+
+      - name: 🔍 Lint
+        run: |
+          echo "::group::npm run lint"
+          npm run lint
+          echo "::endgroup::"
