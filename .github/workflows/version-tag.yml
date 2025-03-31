@@ -11,8 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🧾 Repository auschecken
+      - name: 🧾 Repository auschecken mit Token
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_PAT }}
 
       - name: 📄 Version aus release.txt extrahieren
         id: get_version
@@ -23,12 +25,15 @@ jobs:
 
       - name: 🏷️ Git Tag erstellen (wenn noch nicht vorhanden)
         run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git
+          
           git fetch --tags
+          
           if git tag | grep -q "^${{ steps.get_version.outputs.version }}$"; then
             echo "❌ Tag ${{ steps.get_version.outputs.version }} existiert bereits."
           else
-            git config user.name "GitHub Action"
-            git config user.email "action@github.com"
             git tag ${{ steps.get_version.outputs.version }}
             git push origin ${{ steps.get_version.outputs.version }}
             echo "✅ Tag ${{ steps.get_version.outputs.version }} wurde erstellt."
