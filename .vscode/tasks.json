@@ -2,20 +2,45 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "🚀 Version bump + Git Push",
+      "label": "🚀 Version Bump – Patch (Standard)",
       "type": "shell",
       "command": "C:\\Program Files\\Git\\bin\\bash.exe",
       "args": [
         "-c",
-        "./scripts/bump-version.sh && git add . && git commit -m \"🔖 Auto-Version-and-Push\" && git pull --rebase && git push"
+        "./scripts/bump-version.sh patch && git add . && git commit -m \"🔖 Patch-Version\" && git pull --rebase && git push"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "group": {
-        "kind": "build",
-        "isDefault": true
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "🚀 Version Bump – Minor",
+      "type": "shell",
+      "command": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": [
+        "-c",
+        "./scripts/bump-version.sh minor && git add . && git commit -m \"🔖 Minor-Version\" && git pull --rebase && git push"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
       },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "🚀 Version Bump – Major",
+      "type": "shell",
+      "command": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": [
+        "-c",
+        "./scripts/bump-version.sh major && git add . && git commit -m \"🔖 Major-Version\" && git pull --rebase && git push"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
       "problemMatcher": []
     }
   ]
