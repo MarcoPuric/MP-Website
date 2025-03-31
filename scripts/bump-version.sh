@@ -4,10 +4,10 @@ FILE="public/release.txt"
 BUMP_TYPE=${1:-patch}  # Standard: patch
 
 # Falls release.txt nicht existiert → init
+# In bump-version.sh
 if [ ! -f "$FILE" ]; then
   echo "MP-Website v1.0.0" > $FILE
   echo "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $FILE
-  echo "✅ Erstversion erstellt: v1.0.0"
   exit 0
 fi
 
