@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import React from "react";
 import { verifyTOTP } from "@/lib/totp";
 import QRSetup from "@/components/QRSetup";
 import KIModeToggle from "@/components/KIModeToggle";

@@ -3,13 +3,11 @@ import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 
 export default function QRSetup({ secret }: { secret: string }) {
-  const [url, setUrl] = useState("");
   const [qr, setQr] = useState("");
 
   useEffect(() => {
     const { authenticator } = require("otplib");
     const uri = authenticator.keyuri("admin@puric.dev", "MP-Website", secret);
-    setUrl(uri);
     QRCode.toDataURL(uri).then(setQr);
   }, [secret]);
 
