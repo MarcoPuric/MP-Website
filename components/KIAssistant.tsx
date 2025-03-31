@@ -1,9 +1,11 @@
 "use client";
 
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 
 const mockResponses: Record<string, string> = {
   "was kannst du?": "Ich habe Erfahrung in DevOps, Monitoring, Security und AI-gestützter Softwareentwicklung.",
@@ -14,16 +16,33 @@ const mockResponses: Record<string, string> = {
 export default function KIAssistant() {
   const [input, setInput] = useState("");
   const [response, setResponse] = useState<string | null>(null);
+  const [useMock, setUseMock] = useState(true);
 
-  const handleAsk = () => {
+  const handleAsk = async () => {
     const key = input.toLowerCase().trim();
-    const answer = mockResponses[key] || "Diese Frage kann ich im Demo-Modus leider nicht beantworten.";
-    setResponse(answer);
+
+    if (useMock) {
+      const answer = mockResponses[key] || "Diese Frage kann ich im Demo-Modus leider nicht beantworten.";
+      setResponse(answer);
+    } else {
+      // Placeholder für GPT-Integration
+      setResponse("[GPT-Modus ist noch nicht aktiv – folgt in Kürze]");
+    }
   };
 
   return (
     <div className="max-w-2xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">🧠 KI-Assistent</h1>
+
+      {/* Toggle für Demo-/Live-Modus */}
+      <div className="flex items-center justify-end gap-2 mb-4">
+        <Label htmlFor="mockMode">Demo-Modus</Label>
+        <Switch
+          id="mockMode"
+          checked={useMock}
+          onCheckedChange={(value: boolean | ((prevState: boolean) => boolean)) => setUseMock(value)}
+        />
+      </div>
 
       <Tabs defaultValue="chat" className="w-full">
         <TabsList className="mb-4">
@@ -41,7 +60,7 @@ export default function KIAssistant() {
             <div className="flex gap-2">
               <Input
                 value={input}
-                onChange={(e: { target: { value: SetStateAction<string>; }; }) => setInput(e.target.value)}
+                onChange={(e) => setInput(e.target.value)}
                 placeholder="z. B. Welche Tools nutzt du?"
               />
               <Button onClick={handleAsk}>Fragen</Button>
@@ -60,7 +79,7 @@ export default function KIAssistant() {
             <h2 className="font-semibold">Analyse (Demo)</h2>
             <p className="text-sm text-muted-foreground">
               Basierend auf meinen Skills liegt mein Fokus auf DevOps, AI und skalierbarer Infrastruktur.
-              Kategorien wie &quot;Cloud&quot; und &quot;Monitoring&quot; ergänzen sich besonders gut.
+              Kategorien wie "Cloud" und "Monitoring" ergänzen sich besonders gut.
             </p>
           </div>
         </TabsContent>
