@@ -60,7 +60,7 @@ export default function KIAssistant() {
             <h2 className="font-semibold">Analyse (Demo)</h2>
             <p className="text-sm text-muted-foreground">
               Basierend auf meinen Skills liegt mein Fokus auf DevOps, AI und skalierbarer Infrastruktur.
-              Kategorien wie "Cloud" und "Monitoring" ergänzen sich besonders gut.
+              Kategorien wie &quot;Cloud&quot; und &quot;Monitoring&quot; ergänzen sich besonders gut.
             </p>
           </div>
         </TabsContent>
