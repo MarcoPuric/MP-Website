@@ -40,7 +40,7 @@ export default function KIAssistant() {
         <Switch
           id="mockMode"
           checked={useMock}
-          onCheckedChange={(value: boolean | ((prevState: boolean) => boolean)) => setUseMock(value)}
+          onCheckedChange={(value: boolean) => setUseMock(value)}
         />
       </div>
 
