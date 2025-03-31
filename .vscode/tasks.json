@@ -41,7 +41,7 @@
         "cwd": "${workspaceFolder}"
       },
       "group": "build",
-      "problemMatcher": []
+      "problemMatcher": [] 
     }
   ]
 }
