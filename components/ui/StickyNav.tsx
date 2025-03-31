@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Home, FileText, Brain, Shield, Mail } from "lucide-react";
+import { Home, FileText, Brain, Shield, Mail, Bot } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import React from "react";
 
@@ -45,9 +45,8 @@ export default function StickyNav() {
       <NavIcon href="#lebenslauf" icon={<FileText />} label="Lebenslauf" active={activeSection === "lebenslauf"} />
       <NavIcon href="#skills" icon={<Brain />} label="Skills" active={activeSection === "skills"} />
       <NavIcon href="#kontakt" icon={<Mail />} label="Kontakt" active={activeSection === "kontakt"} />
-
-      {/* ✅ Admin Panel */}
       <NavIcon href="/admin" icon={<Shield />} label="Admin" />
+      <NavIcon href="/ki-assistent" icon={<Bot />} label="KI" active />
 
       {/* Impressum Button */}
       <Link
