@@ -34,7 +34,8 @@ export default function StickyNav() {
   }, []);
 
   return (
-    <nav className="fixed bottom-4 md:top-6 md:bottom-auto left-1/2 transform -translate-x-1/2 z-50 bg-zinc-900/80 dark:bg-zinc-800/80 backdrop-blur-md rounded-full shadow-lg px-4 py-2 flex items-center gap-4 text-white">
+    <nav
+    className="fixed bottom-2 md:top-6 md:bottom-auto left-1/2 -translate-x-1/2 z-50 bg-zinc-900/80 dark:bg-zinc-800/80 backdrop-blur-md rounded-full shadow-lg px-2 sm:px-4 py-2 flex items-center gap-2 sm:gap-4 text-white max-w-[95vw] overflow-x-auto">
       {/* Logo */}
       <Link href="/" className="text-white hover:opacity-80 px-2">
         <Logo />
