@@ -16,6 +16,7 @@ import Skills from "@/components/sections/Skills";
 import Experience from "@/components/sections/Experience";
 import { Linkedin, Github } from "lucide-react";
 import { trackEvent } from "@/lib/tracker";
+import { getReleaseVersion } from "../lib/get-release";
 
 
 
@@ -49,6 +50,11 @@ export default function HomePage() {
       const last = events[events.length - 1];
       setLastEvent({ type: last.type, timestamp: last.timestamp });
     }
+  }, []);
+  const [version, setVersion] = useState("");
+
+  useEffect(() => {
+    getReleaseVersion().then(setVersion);
   }, []);
   return (
     <main className="relative bg-background text-foreground min-h-screen font-sans overflow-x-hidden">
@@ -288,21 +294,24 @@ export default function HomePage() {
         </div>
 
         <footer className="text-center text-sm text-muted-foreground mt-12 mb-4">
-        <Link href="/impressum" className="underline hover:text-foreground">
-          Impressum & Datenschutz
-        </Link>
-        {/* Öffentliche Mini-Statistik */}
-        <div className="text-center text-xs text-muted-foreground mt-4">
-          <p>📊 Besucher (lokal): <strong>{visitCount}</strong></p>
-          {lastEvent && (
-            <p>
-              Letztes Event: <strong>{lastEvent.type}</strong> <br />
-              Zeit: {new Date(lastEvent.timestamp).toLocaleString()}
-            </p>
-          )}
-        </div>
+          <Link href="/impressum" className="underline hover:text-foreground">
+            Impressum & Datenschutz
+          </Link>
 
-      </footer>
+          <div className="mt-2 text-xs text-muted-foreground">
+            Version: {version || "Lade..."} © 2025 Marco Puric
+          </div>
+
+          <div className="text-center text-xs text-muted-foreground mt-4">
+            <p>📊 Besucher (lokal): <strong>{visitCount}</strong></p>
+            {lastEvent && (
+              <p>
+                Letztes Event: <strong>{lastEvent.type}</strong> <br />
+                Zeit: {new Date(lastEvent.timestamp).toLocaleString()}
+              </p>
+            )}
+          </div>
+        </footer>
       </section>
     </main>
   );

@@ -1,7 +1,8 @@
 {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "always"
-    },
-    "editor.formatOnSave": true
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.profiles.windows": {
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe"
+    }
   }
-  
+}
