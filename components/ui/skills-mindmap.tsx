@@ -8,7 +8,7 @@ const categories = [
     name: "Cloud",
     color: "bg-purple-600",
     icon: "☁️",
-    skills: ["AWS", "SLA/SLOs", "Cloud Architektur", "Docker"],
+    skills: ["AWS", "SLA/SLOs", "Cloud Architektur", "Containerisierung", "Terraform", "ITIL-Service Stategy", "ActiveMQ", "Payara Microservices",],
   },
   {
     name: "Monitoring",
@@ -20,7 +20,7 @@ const categories = [
     name: "Security",
     color: "bg-red-500",
     icon: "🛡️",
-    skills: ["Incident Response", "ISC2 CC", "IBM AI Security"],
+    skills: ["Incident Response-Management", "SIEM-Tools", "NIST Cybersecurity Framework", "Information Security", "Cyber Threat Intelligence", "Disaster Recovery", "Business Continuity","Network-Security" ],
   },
   {
     name: "AI / Prompting",
@@ -32,7 +32,7 @@ const categories = [
     name: "DevOps",
     color: "bg-yellow-500",
     icon: "⚙️",
-    skills: ["CI/CD", "GitLab CI", "Kubernetes"],
+    skills: ["CI/CD", "GitLab CI", "Kubernetes", "React", "JavaScript", "Incident-Management", "Python", "JIRA","Windows & Linux Administration" ],
   },
 ];
 
