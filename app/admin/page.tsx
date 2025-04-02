@@ -4,12 +4,15 @@ import React from "react";
 import { verifyTOTP } from "@/lib/totp";
 import QRSetup from "@/components/QRSetup";
 import KIModeToggle from "@/components/KIModeToggle";
+import KIMonitor from "@/components/admin/KIMonitor";
 
 export default function AdminPage() {
   const [step, setStep] = useState<"login" | "2fa" | "granted">("login");
   const [secret] = useState(process.env.NEXT_PUBLIC_ADMIN_TOTP_SECRET!);
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
+
+
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,9 +43,12 @@ export default function AdminPage() {
         <section className="mt-10 flex justify-center">
           <KIModeToggle />
         </section>
+  
+        <KIMonitor /> {/* ✅ Diagramm-Komponente */}
       </main>
     );
   }
+  
   
 
   return (
