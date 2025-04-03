@@ -38,7 +38,7 @@ export default function KIAssistant() {
   
         const data = await res.json();
         setResponse(data.answer || "⚠️ Keine Antwort erhalten.");
-      } catch (error) {
+      } catch {
         setResponse("❌ Fehler bei der GPT-Anfrage.");
       }
     }
