@@ -20,13 +20,27 @@ export default function KIAssistant() {
 
   const handleAsk = async () => {
     const key = input.toLowerCase().trim();
-
+  
     if (useMock) {
       const answer = mockResponses[key] || "Diese Frage kann ich im Demo-Modus leider nicht beantworten.";
       setResponse(answer);
     } else {
-      // Placeholder für GPT-Integration
-      setResponse("[GPT-Modus ist noch nicht aktiv – folgt in Kürze]");
+      try {
+        setResponse("⏳ Lade Antwort...");
+  
+        const res = await fetch("/api/gpt", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ input }),
+        });
+  
+        const data = await res.json();
+        setResponse(data.answer || "⚠️ Keine Antwort erhalten.");
+      } catch (error) {
+        setResponse("❌ Fehler bei der GPT-Anfrage.");
+      }
     }
   };
 
