@@ -86,7 +86,7 @@ export default function Experience() {
                 <ul className="mt-2 list-disc ml-4 text-sm">
                 <li>Konfigurieren der OCR-Erkennung</li>
                 <li>Koordination der &quot;Beleg-App&quot;-Tasks</li>
-                <li>2nd Level Support</li>
+                <li>2nd Level Support für alle Cloud-Anwendungen im Produktportfolio</li>
                 </ul>
             </VerticalTimelineElement>
             {/* Ausbildung */}
