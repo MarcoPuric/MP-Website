@@ -17,22 +17,10 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: ContentSecurityPolicy.replace(/\n/g, ""),
   },
-  {
-    key: "Referrer-Policy",
-    value: "strict-origin-when-cross-origin",
-  },
-  {
-    key: "X-Content-Type-Options",
-    value: "nosniff",
-  },
-  {
-    key: "X-Frame-Options",
-    value: "DENY",
-  },
-  {
-    key: "X-XSS-Protection",
-    value: "1; mode=block",
-  },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-XSS-Protection", value: "1; mode=block" },
   {
     key: "Strict-Transport-Security",
     value: "max-age=63072000; includeSubDomains; preload",
@@ -41,10 +29,18 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+
+  /* 🌐 Mehrsprachigkeit */
+  i18n: {
+    locales: ["de", "en"],   // beliebig erweiterbar
+    defaultLocale: "de",
+  },
+
+  /* HTTP-Security-Header */
   async headers() {
     return [
       {
-        source: "/(.*)",
+        source: "/(.*)",      // gilt global
         headers: securityHeaders,
       },
     ];
