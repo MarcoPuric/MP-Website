@@ -21,6 +21,9 @@ const categories = [
       "WaveStack",
       "ActiveMQ",
       "Azure ACR",
+      "Terraform",
+      "Terragrunt",
+      "Azure Bicep",
     ],
   },
   {
