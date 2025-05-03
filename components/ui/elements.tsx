@@ -62,6 +62,12 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
+function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div className={cn("p-6", className)} {...props} />
+  );
+}
+
 //
 // 🏷️ BADGE
 //
@@ -88,4 +94,4 @@ function Badge({
   );
 }
 
-export { Button, Card, Badge };
+export { Button, Card, CardContent, Badge };

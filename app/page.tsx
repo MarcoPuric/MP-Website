@@ -17,6 +17,7 @@ import Experience from "@/components/sections/Experience";
 import { Linkedin, Github } from "lucide-react";
 import { trackEvent } from "@/lib/tracker";
 import { getReleaseVersion } from "../lib/get-release";
+import NewspaperWidget from '@/components/NewspaperWidget';
 
 
 
@@ -150,7 +151,7 @@ export default function HomePage() {
             Kontakt aufnehmen
           </Button>
         </Link>
-
+        <NewspaperWidget /> {/*  ⬅️ Floating widget */}
         <div className="mt-10 animate-bounce text-zinc-400">
           ↓ Mehr erfahren
         </div>
