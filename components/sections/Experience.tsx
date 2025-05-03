@@ -41,7 +41,7 @@ export default function Experience() {
                 <li>RRM und IRP erstellt ( &quot;RapidResponseManual&quot; und &quot;IncidentResponsePlan&quot; ) </li>
                 <li>Einführen der Real-Time-Anomaly-Detection </li>
                 <li>Ansprechpartner der fachlichen PMs/POs für neue Features/Produkte für die Themen technische Realisierung, SPOFs, Optimales &quot;Go-Live&quot; </li>
-                <li>// Beispiel: Einführung E-Rechnung Verarbeitung in der Cloud / BOL ( Online Banking in der Cloud ) / &quot;4/3-Rechner&quot; Echtzeit-Matching der verfügbaren Umsatz-Daten mit den Daten aus der OCR-Erkennung </li>
+                <li>Beispiel: Einführung E-Rechnung Verarbeitung in der Cloud / BOL ( Online Banking in der Cloud ) / &quot;4/3-Rechner&quot; Echtzeit-Matching der verfügbaren Umsatz-Daten mit den Daten aus der OCR-Erkennung </li>
                 <li>automatisiertes Access-Log-Monitoring</li>
                 </ul>
             </VerticalTimelineElement>
