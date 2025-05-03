@@ -123,6 +123,7 @@ export default function SkillsMindmap() {
 
   if (!mounted) return null;
 
+  const isMobile = windowSize.width < 768;
   const centerX = windowSize.width / 2;
   const centerY = 300;
 
@@ -149,7 +150,28 @@ export default function SkillsMindmap() {
           </button>
         ))}
       </div>
-
+       {/* Mobile Ansicht */}
+      {isMobile ? (
+        <div className="space-y-4 px-4">
+          {filteredCategories.map((cat) => (
+            <div
+              key={cat.name}
+              className="bg-zinc-800 rounded-xl p-4 shadow text-white"
+            >
+              <div className="text-lg font-bold mb-2 flex items-center gap-2">
+                <span className="text-2xl">{cat.icon}</span>
+                <span>{cat.name}</span>
+              </div>
+              <ul className="list-disc list-inside text-sm pl-2">
+                {cat.skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      ) : (
+        // Desktop Mindmap 
       <div className="relative w-full h-[600px]">
         {/* Linien */}
         <svg className="absolute top-0 left-0 w-full h-full z-0">
@@ -253,6 +275,7 @@ export default function SkillsMindmap() {
           });
         })}
       </div>
+      )}
     </>
   );
 }
