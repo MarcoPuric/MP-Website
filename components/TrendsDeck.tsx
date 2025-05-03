@@ -26,8 +26,8 @@ export default function TrendsDeck() {
             <p className="text-sm line-clamp-3">{item.desc}</p>
             <span className="text-xs text-muted-foreground">
               {item.type === 'repo'
-                ? `★ ${item.stars.toLocaleString()} · ${item.lang}`
-                : `${new Date(item.published).toLocaleDateString()} · ${item.source}`}
+                ? `★ ${item.stars.toLocaleString()} · ${item.lang}`
+                : `${new Date(item.published).toLocaleDateString()} · ${item.source}`}
             </span>
           </CardContent>
         </Card>

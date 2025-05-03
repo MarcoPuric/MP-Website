@@ -151,7 +151,7 @@ export default function HomePage() {
             Kontakt aufnehmen
           </Button>
         </Link>
-        <NewspaperWidget /> {/*  ⬅️ Floating widget */}
+        <NewspaperWidget /> {/*  Floating widget */}
         <div className="mt-10 animate-bounce text-zinc-400">
           ↓ Mehr erfahren
         </div>
