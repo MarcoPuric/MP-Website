@@ -5,7 +5,7 @@ const NEWS = process.env.NEWSAPI_KEY!;
 
 export async function GET() {
   try {
-    const qs = '\"AIOps\" OR \"NoOps\"';
+    const qs = '"AIOps" OR "NoOps"';
     const since = new Date(Date.now() - 90*86_400_000).toISOString().slice(0,10);
     const ghUrl = `https://api.github.com/search/repositories?q=${qs}+created:>${since}&sort=stars&per_page=5`;
 
