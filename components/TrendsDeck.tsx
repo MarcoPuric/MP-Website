@@ -10,6 +10,11 @@ export default function TrendsDeck() {
   if (isLoading) return <p>Lade Tech‑Trends…</p>;
   if (error)     return <p className="text-destructive">Fehler beim Laden der Trends.</p>;
 
+  if (!Array.isArray(data)) {
+    console.error("❌ Ungültige Trend-Daten:", data);
+    return <p className="text-destructive">Keine Trenddaten verfügbar.</p>;
+  }
+  
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {data.map((item: any) => (
@@ -26,7 +31,7 @@ export default function TrendsDeck() {
             <p className="text-sm line-clamp-3">{item.desc}</p>
             <span className="text-xs text-muted-foreground">
               {item.type === 'repo'
-                ? `★ ${item.stars.toLocaleString()} · ${item.lang}`
+                ? `★ ${item.stars?.toLocaleString?.() ?? 0} · ${item.lang ?? '–'}`
                 : `${new Date(item.published).toLocaleDateString()} · ${item.source}`}
             </span>
           </CardContent>
