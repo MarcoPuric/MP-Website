@@ -14,7 +14,7 @@ export default function Experience() {
         {/* Berufserfahrung */}
         <VerticalTimelineElement
                 className="vertical-timeline-element--work"
-                date="Apr. 2022 – Jetzt"
+                date="Apr. 2021 – Jetzt"
                 iconStyle={{ background: "#3b82f6", color: "#fff" }}
                 icon={<FaLaptopCode />}
                 contentStyle={{
@@ -49,7 +49,7 @@ export default function Experience() {
             {/* Projektkoordination */}
             <VerticalTimelineElement
                 className="vertical-timeline-element--work"
-                date="Apr. 2021 – Apr. 2022"
+                date="Apr. 2020 – Apr. 2021"
                 iconStyle={{ background: "#f97316", color: "#fff" }}
                 icon={<FaCogs />}
                 contentStyle={{
@@ -76,7 +76,7 @@ export default function Experience() {
             {/* Anwendungsberater */}
             <VerticalTimelineElement
                 className="vertical-timeline-element--education"
-                date="2019 – Apr. 2021"
+                date="2019 – Apr. 2020"
                 iconStyle={{ background: "#10b981", color: "#fff" }}
                 icon={<FaGraduationCap />}
                 contentStyle={{
